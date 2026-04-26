@@ -386,19 +386,19 @@
     btn.textContent = 'Add Player';
     btn.disabled = false;
 
-    const headUrl = `https://mc-heads.net/avatar/${encodeURIComponent(realName)}/64`;
-
     const wrapper = document.createElement('div');
     wrapper.className = 'player-wrapper';
 
     const img = document.createElement('img');
     img.className = 'player-head';
-    img.src = headUrl;
+    img.src = `https://mc-heads.net/avatar/${encodeURIComponent(realName)}/64`;
     img.alt = realName;
     img.title = realName;
 
     img.onerror = () => {
-      img.src = `https://mc-heads.net/avatar/MHF_Steve/64`;
+      // fallback to minotar
+      img.onerror = null;
+      img.src = `https://minotar.net/avatar/${encodeURIComponent(realName)}/64`;
     };
 
     const nameEl = document.createElement('div');
